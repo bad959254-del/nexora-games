@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <title>Play Game | Nexora Games</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .play-area {
+      max-width: 760px;
+      margin: 45px auto 80px;
+      padding: 25px;
+      background: #141414;
+      border: 1px solid #383027;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .game-title { font: 700 30px Orbitron, sans-serif; margin: 20px 0 10px; }
+    .game-instructions { color: #aaa; margin-bottom: 25px; }
+    #game-container { min-height: 230px; display: grid; place-items: center; }
+    .game-button {
+      background: #e7b94f; color: #111; border: 0; padding: 12px 20px;
+      border-radius: 6px; font-weight: 700; cursor: pointer; margin: 5px;
+    }
+    .back-link { color: #e7b94f; text-decoration: none; display: inline-block; margin: 20px 0; }
+    .status { color: #e7b94f; margin: 15px; font-size: 18px; }
+    @media(max-width:500px) {
+      .play-area { margin: 25px 5px; padding: 15px; }
+      .game-title { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a class="logo" href="index.html">NEXORA<span> GAMES</span></a>
+    <a class="back-link" href="index.html">← HOME</a>
+  </header>
+
+  <main class="container">
+    <section class="play-area">
+      <p class="eyebrow">NOW PLAYING</p>
+      <h1 id="game-title" class="game-title">Loading Game...</h1>
+      <p id="game-instructions" class="game-instructions">Get ready to play!</p>
+      <div id="game-container">Starting game...</div>
+      <p id="game-status" class="status" aria-live="polite"></p>
+      <button id="restart-button" class="game-button" type="button">↻ RESTART</button>
+      <a class="back-link" href="index.html">← Back to all games</a>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
