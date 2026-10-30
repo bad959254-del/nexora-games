@@ -1,0 +1,75 @@
+
+const games = [
+  { id: "snake", name: "Neon Snake", icon: "🐍", desc: "Eat, grow and beat your high score." },
+  { id: "memory", name: "Memory Match", icon: "🧠", desc: "Find matching pairs of cards." },
+  { id: "ttt", name: "Tic-Tac-Toe", icon: "❌", desc: "Challenge a friend or the computer." },
+  { id: "rps", name: "Rock Paper Scissors", icon: "✊", desc: "Can you beat the computer?" },
+  { id: "2048", name: "2048 Puzzle", icon: "🔢", desc: "Merge tiles to reach 2048." },
+  { id: "breakout", name: "Brick Breaker", icon: "🧱", desc: "Break bricks with your bouncing ball." },
+  { id: "hangman", name: "Hangman", icon: "🔤", desc: "Guess the hidden word." },
+  { id: "mole", name: "Whack-a-Mole", icon: "🐹", desc: "Hit the moles before time runs out." },
+  { id: "reaction", name: "Reaction Test", icon: "⚡", desc: "Test how fast you can react." },
+  { id: "math", name: "Math Sprint", icon: "➗", desc: "Solve maths questions quickly." },
+  { id: "flappy", name: "Flappy Bird", icon: "🐦", desc: "Fly through the pipes." },
+  { id: "racing", name: "Car Racing", icon: "🏎️", desc: "Dodge traffic and survive." },
+  { id: "pong", name: "Pong", icon: "🏓", desc: "Play the classic paddle game." },
+  { id: "sudoku", name: "Sudoku", icon: "🔢", desc: "Complete the number puzzle." },
+  { id: "minesweeper", name: "Minesweeper", icon: "💣", desc: "Find safe squares and avoid mines." },
+  { id: "word", name: "Word Scramble", icon: "🔠", desc: "Unscramble the mixed-up word." },
+  { id: "connect4", name: "Connect Four", icon: "🔴", desc: "Connect four pieces to win." },
+  { id: "simon", name: "Simon Says", icon: "🎨", desc: "Repeat the colour sequence." },
+  { id: "jumper", name: "Platform Jumper", icon: "🦘", desc: "Jump between platforms." },
+  { id: "typing", name: "Typing Speed", icon: "⌨️", desc: "Test your typing speed." },
+  { id: "coin", name: "Coin Flip", icon: "🪙", desc: "Predict heads or tails." },
+  { id: "dice", name: "Dice Roller", icon: "🎲", desc: "Roll the dice and try your luck." },
+  { id: "color", name: "Color Match", icon: "🌈", desc: "Match the correct colour." },
+  { id: "target", name: "Target Shooter", icon: "🎯", desc: "Hit targets and score points." },
+  { id: "maze", name: "Maze Escape", icon: "🌀", desc: "Find your way out of the maze." },
+  { id: "card", name: "Higher or Lower", icon: "🃏", desc: "Guess the next card." },
+  { id: "basket", name: "Basketball Shot", icon: "🏀", desc: "Aim and score baskets." },
+  { id: "football", name: "Penalty Kick", icon: "⚽", desc: "Score goals past the goalkeeper." },
+  { id: "tower", name: "Tower Stack", icon: "🏗️", desc: "Stack blocks as high as possible." },
+  { id: "lights", name: "Lights Out", icon: "💡", desc: "Turn off every light to win." }
+];
+
+const grid = document.getElementById("game-grid");
+const search = document.getElementById("search");
+const count = document.getElementById("game-count");
+
+function renderGames(query = "") {
+  const filtered = games.filter(game =>
+    game.name.toLowerCase().includes(query.toLowerCase())
+  );
+
+  grid.innerHTML = "";
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p class="empty-message">No games found. Try another search.</p>';
+  }
+
+  filtered.forEach(game => {
+    const card = document.createElement("a");
+    card.className = "game-card";
+    card.href = `game.html?game=${encodeURIComponent(game.id)}`;
+
+    const icon = document.createElement("div");
+    icon.className = "game-icon";
+    icon.textContent = game.icon;
+
+    const title = document.createElement("h3");
+    title.textContent = game.name;
+
+    const description = document.createElement("p");
+    description.textContent = game.desc;
+
+    card.append(icon, title, description);
+    grid.appendChild(card);
+  });
+
+  count.textContent = `${filtered.length} GAMES`;
+}
+
+if (grid && search) {
+  renderGames();
+  search.addEventListener("input", () => renderGames(search.value));
+}
