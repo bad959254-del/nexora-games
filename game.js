@@ -673,9 +673,6 @@ gameFunctions.word = function () {
   }));
 };
 
-// NEXORA GAMES - PART 2
-// Games 16-30 and final game loader
-
 // 16. CONNECT FOUR
 gameFunctions.connect4 = function () {
   let board = Array(42).fill("");
